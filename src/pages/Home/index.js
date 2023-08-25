@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View, FlatList } from 'react-native';
 import Header from '../../components/Header'
 import Balance from '../../components/Balance';
+import Movements from '../../components/Movements';
 
 const list = [
   {
@@ -40,7 +41,7 @@ export default function Home() {
         data={list}
         keyExtractor={(item) => String(item.id)} //converte item.id em string, obrigado ser string a key para keyExtractor
         showVerticalScrollIndicator={false}
-        renderItem={({ item }) => <Text>TESTE</Text>}
+        renderItem={({ item }) => <Movements data={item} />}
       />
 
     </View>
