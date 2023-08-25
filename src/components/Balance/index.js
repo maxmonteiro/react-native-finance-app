@@ -7,7 +7,7 @@ import {
 
 export default function Balance() {
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, styles.boxShadow]}>
 
       <View style={styles.item}>
         <Text style={styles.itemTitle}>Saldo</Text>
@@ -75,3 +75,29 @@ const styles = StyleSheet.create({
         color: '#e74c3c'
     }
 })
+
+const generateBoxShadowStyle = (
+    xOffset,
+    yOffset,
+    shadowColorIos,
+    shadowOpacity,
+    shadowRadius,
+    elevation,
+    shadowColorAndroid,
+) => {
+    if (Platform.OS === 'ios') {
+        styles.boxShadow = {
+            shadowColor: shadowColorIos,
+            shadowOffset: {width: xOffset, height: yOffset},
+            shadowOpacity,
+            shadowRadius,
+        };
+    } else if (Platform.OS === 'android') {
+        styles.boxShadow = {
+            elevation,
+            shadowColor: shadowColorAndroid,
+        };
+    }
+};
+
+generateBoxShadowStyle(-2, 4, '#171717', 0.2, 3, 4, '#171717');
